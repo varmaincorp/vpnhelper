@@ -3,6 +3,9 @@ import requests
 
 
 def time_milli():
+    """
+    Returns milli seconds from the time of EPOCH to till time
+    """
     return int(time.time() * 1000)
 
 
@@ -35,6 +38,9 @@ def req_login(username, password, producttype=0):
 
 
 def login(username, password, producttype=0):
+    """
+    Login to the college wifi with current time timestamp
+    """
     try:
         res = req_login(username, password, producttype)
     except requests.exceptions.ConnectionError as ex:
@@ -43,6 +49,9 @@ def login(username, password, producttype=0):
         pass
 
 def req_logout(username, producttype=0):
+    """
+    Logout from wifi with current device mac address and timestamp
+    """
     payload = {
         'username': username,
         "a": time_milli(),
